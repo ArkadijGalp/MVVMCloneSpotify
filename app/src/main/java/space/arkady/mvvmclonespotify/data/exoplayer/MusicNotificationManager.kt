@@ -12,6 +12,8 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
 import space.arkady.mvvmclonespotify.R
+import space.arkady.mvvmclonespotify.extensions.NOTIFICATION_CHANNEL_ID
+import space.arkady.mvvmclonespotify.extensions.NOTIFICATION_ID
 
 class MusicNotificationManager(
     private val context: Context,
@@ -26,11 +28,12 @@ class MusicNotificationManager(
         val mediaController = MediaControllerCompat(context, sessionToken)
         notificationManager = PlayerNotificationManager.Builder(
             context,
-            1,
-            "Music",
-        ).apply {
-            setSmallIconResourceId(R.drawable.ic_baseline_music_note_24)
-        }
+            NOTIFICATION_ID, NOTIFICATION_CHANNEL_ID)
+            .apply {
+                setMediaDescriptionAdapter(DescriptionAdapter(mediaController))
+                setSmallIconResourceId(R.drawable.ic_baseline_music_note_24)
+                setNotificationListener(notificationListener)
+            }
     }
 
     private inner class DescriptionAdapter(
@@ -61,6 +64,7 @@ class MusicNotificationManager(
                     ) {
                         callback.onBitmap(resource)
                     }
+
                     override fun onLoadCleared(placeholder: Drawable?) = Unit
                 })
             return null

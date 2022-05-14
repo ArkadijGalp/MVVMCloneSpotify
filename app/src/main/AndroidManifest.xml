@@ -3,8 +3,7 @@
     package="space.arkady.mvvmclonespotify">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".data.SpotifyApplication"
@@ -15,20 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMCloneSpotify">
         <service android:name=".data.exoplayer.MusicService"
-            android:exported="false">
-        <intent-filter>
-            <action android:name="android.media.browse.MediaBrowser.Service" />
-        </intent-filter>
-
-    </service>
-    <activity android:name=".data.ui.MainActivity"
-        android:exported="true">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService"/>
+            </intent-filter>
+        </service>
+        <activity android:name=".data.ui.MainActivity"
+            android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-    </activity>
-</application>
-
+        </activity>
+    </application>
     </manifest>
