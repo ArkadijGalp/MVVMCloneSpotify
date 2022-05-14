@@ -12,6 +12,7 @@ import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import space.arkady.mvvmclonespotify.data.exoplayer.State.*
 import space.arkady.mvvmclonespotify.data.remote.MusicDatabase
 import javax.inject.Inject
 
@@ -23,10 +24,10 @@ class FirebaseMusicSource @Inject constructor(
     var songs = emptyList<MediaMetadataCompat>()
 
     suspend fun fetchMediaData() = withContext(Dispatchers.IO) {
-        state == State.STATE_INITIALISING
+        state = STATE_INITIALISING
         val allsongs = musicDatabase.getAllSongs()
         songs = allsongs.map { song ->
-            MediaMetadataCompat.Builder()
+            Builder()
                 .putString(METADATA_KEY_ARTIST, song.subtitle)
                 .putString(METADATA_KEY_MEDIA_ID, song.mediaId)
                 .putString(METADATA_KEY_TITLE, song.title)
@@ -38,7 +39,7 @@ class FirebaseMusicSource @Inject constructor(
                 .putString(METADATA_KEY_DISPLAY_DESCRIPTION, song.subtitle)
                 .build()
         }
-        state = State.STATE_INITIALIZED
+        state = STATE_INITIALIZED
     }
 
     fun asMediaSource(dataSourceFactory: DataSource.Factory): ConcatenatingMediaSource {
@@ -62,27 +63,27 @@ class FirebaseMusicSource @Inject constructor(
         MediaBrowserCompat.MediaItem(description, FLAG_PLAYABLE)
     }.toMutableList()
 
-    private var state: State = State.STATE_CREATED
+    private var state: State = STATE_CREATED
         set(value) {
-            if (value == State.STATE_INITIALIZED || value == State.STATE_ERROR) {
+            if (value == STATE_INITIALIZED || value == STATE_ERROR) {
                 synchronized(onReadyListeners) {
                     field = value
                     onReadyListeners.forEach { listener ->
-                        listener(state == State.STATE_INITIALIZED)
+                        listener(state == STATE_INITIALIZED)
                     }
                 }
             } else {
-                field == value
+                field = value
             }
         }
 
     fun whenReady(action: (Boolean) -> Unit): Boolean {
-        if (state == State.STATE_CREATED || state == State.STATE_INITIALISING) {
+        return if (state == STATE_CREATED || state == STATE_INITIALISING) {
             onReadyListeners += action
-            return false
+            false
         } else {
-            action(state == State.STATE_INITIALIZED)
-            return true
+            action(state == STATE_INITIALIZED)
+            true
         }
     }
 }

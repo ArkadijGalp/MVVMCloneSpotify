@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:name=".data.SpotifyApplication"
@@ -14,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMCloneSpotify">
         <service android:name=".data.exoplayer.MusicService"
-            android:exported="true">
+            android:exported="false">
         <intent-filter>
             <action android:name="android.media.browse.MediaBrowser.Service" />
         </intent-filter>

@@ -11,12 +11,13 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import space.arkady.mvvmclonespotify.R
 import space.arkady.mvvmclonespotify.data.adapters.SongAdapter
 import space.arkady.mvvmclonespotify.data.ui.viewmodel.MainViewModel
-import space.arkady.mvvmclonespotify.extensions.Status
+import space.arkady.mvvmclonespotify.extensions.Status.*
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
+
 
     lateinit var mainViewModel: MainViewModel
 
@@ -41,14 +42,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun subscribeToObservers() {
         mainViewModel.mediaItems.observe(viewLifecycleOwner) { result ->
             when (result.status) {
-                Status.SUCCESS -> {
+                SUCCESS -> {
                     allSongsProgressBar.isVisible = false
                     result.data?.let { songs ->
                         songAdapter.songs = songs
                     }
                 }
-                Status.ERROR -> Unit
-                Status.LOADING -> allSongsProgressBar.isVisible = true
+                ERROR -> Unit
+                LOADING -> allSongsProgressBar.isVisible = true
             }
         }
     }

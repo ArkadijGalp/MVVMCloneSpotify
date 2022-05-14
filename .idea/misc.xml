@@ -7,11 +7,13 @@
         <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/drawable-v24/ic_baseline_play_arrow_24.xml" value="0.121" />
         <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/drawable-v24/ic_baseline_skip_previous_24.xml" value="0.121" />
         <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/drawable/ic_baseline_music_note_24.xml" value="0.1375" />
-        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/fragment_home.xml" value="0.16799999999999998" />
-        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/fragment_song.xml" value="0.10989583333333333" />
-        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/list_item.xml" value="0.10989583333333333" />
-        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/swipe_item.xml" value="0.10989583333333333" />
+        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.252" />
+        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/drawable/ic_baseline_skip_next_24.xml" value="0.164" />
+        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/fragment_song.xml" value="0.2" />
+        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/list_item.xml" value="0.4" />
+        <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/layout/swipe_item.xml" value="0.264" />
         <entry key="..\:/ProjectsReworks/MVVMCloneSpotify/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
       </map>
     </option>

@@ -64,7 +64,7 @@ class MusicService : MediaBrowserServiceCompat() {
 
 
         val activityIntent = packageManager.getLaunchIntentForPackage(packageName)?.let {
-            PendingIntent.getActivity(this, 0, it, 0)
+            PendingIntent.getActivity(this, 0, it, PendingIntent.FLAG_IMMUTABLE)
         }
         mediaSession = MediaSessionCompat(this, SERVICE_TAG).apply {
             setSessionActivity(activityIntent)
@@ -134,7 +134,7 @@ class MusicService : MediaBrowserServiceCompat() {
         clientPackageName: String,
         clientUid: Int,
         rootHints: Bundle?
-    ): BrowserRoot? {
+    ): BrowserRoot {
         return BrowserRoot(MEDIA_ROOT_ID, null)
     }
 
@@ -157,6 +157,7 @@ class MusicService : MediaBrowserServiceCompat() {
                         isPlayerInitialized = true
                     } else {
                         mediaSession.sendSessionEvent(NETWORK_ERROR, null)
+
                     }
                 }
                 if (!resultSent) {
