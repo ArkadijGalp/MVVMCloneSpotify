@@ -1,6 +1,7 @@
 package space.arkady.mvvmclonespotify.data.exoplayer
 
 import android.app.PendingIntent
+import android.app.PendingIntent.*
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.media.MediaBrowserCompat
@@ -63,8 +64,8 @@ class MusicService : MediaBrowserServiceCompat() {
         }
 
 
-        val activityIntent = packageManager.getLaunchIntentForPackage(packageName)?.let {
-            PendingIntent.getActivity(this, 0, it, PendingIntent.FLAG_IMMUTABLE)
+        val activityIntent = packageManager?.getLaunchIntentForPackage(packageName)?.let {
+            PendingIntent.getActivity(this, 0, it, FLAG_IMMUTABLE)
         }
         mediaSession = MediaSessionCompat(this, SERVICE_TAG).apply {
             setSessionActivity(activityIntent)
