@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
                     super.onChildrenLoaded(parentId, children)
                     val items = children.map {
                         Song(
-                            it.mediaId!!,
+                            it.mediaId.toString(),
                             it.description.toString(),
                             it.description.subtitle.toString(),
                             it.description.mediaUri.toString(),

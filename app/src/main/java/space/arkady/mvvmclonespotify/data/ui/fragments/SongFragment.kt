@@ -80,7 +80,7 @@ if (fromUser) {
     private fun updateTitleAndImage(song: Song) {
         val title = "${song.title} - ${song.subtitle}"
         tvSongName.text = title
-        glide.load(song.imageUrl).into(ivSongImage)
+        glide.load(song.imageUri).into(ivSongImage)
     }
 
     private fun subscribeToObservers() {
